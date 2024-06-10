@@ -286,6 +286,12 @@ class DragAndDropLists extends StatefulWidget {
   /// https://github.com/flutter/flutter/issues/14842#issuecomment-371344881
   final bool removeTopPadding;
 
+  /// If you put a widget before DragAndDropLists there's an unexpected padding
+  /// before the list renders. This is the default behaviour for ListView which
+  /// is used internally. To remove the padding, set this field to true
+  /// https://github.com/flutter/flutter/issues/14842#issuecomment-371344881
+  final bool removeTopPadding;
+
   DragAndDropLists({
     required this.children,
     required this.onItemReorder,

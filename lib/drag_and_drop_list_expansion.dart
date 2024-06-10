@@ -7,7 +7,6 @@ import 'package:drag_and_drop_lists/drag_and_drop_item_wrapper.dart';
 import 'package:drag_and_drop_lists/drag_and_drop_list_interface.dart';
 import 'package:drag_and_drop_lists/programmatic_expansion_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 typedef void OnExpansionChanged(bool expanded);
 
@@ -105,14 +104,14 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
                   if (candidateData.isNotEmpty) {}
                   return Container();
                 },
-                onWillAccept: (incoming) {
+                onWillAcceptWithDetails: (details) {
                   _startExpansionTimer();
                   return false;
                 },
-                onLeave: (incoming) {
+                onLeave: (data) {
                   _stopExpansionTimer();
                 },
-                onAccept: (incoming) {},
+                onAcceptWithDetails: (details) {},
               ),
             )
           ]);
@@ -140,11 +139,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
       }
       contents.add(DragAndDropItemTarget(
         parent: this,
-        verticalAlignment: parameters.verticalAlignment,
-        itemGhost: parameters.itemGhost,
-        itemGhostOpacity: parameters.itemGhostOpacity,
-        itemSizeAnimationDuration: parameters.itemSizeAnimationDuration,
-        itemTargetOnWillAccept: parameters.itemTargetOnWillAccept,
+        parameters: parameters,
         onReorderOrAdd: parameters.onItemDropOnLastTarget!,
         child: lastTarget ??
             Container(
@@ -164,11 +159,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
       contents.add(
         DragAndDropItemTarget(
           parent: this,
-          verticalAlignment: parameters.verticalAlignment,
-          itemGhost: parameters.itemGhost,
-          itemGhostOpacity: parameters.itemGhostOpacity,
-          itemSizeAnimationDuration: parameters.itemSizeAnimationDuration,
-          itemTargetOnWillAccept: parameters.itemTargetOnWillAccept,
+          parameters: parameters,
           onReorderOrAdd: parameters.onItemDropOnLastTarget!,
           child: lastTarget ??
               Container(

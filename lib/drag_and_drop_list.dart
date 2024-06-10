@@ -131,11 +131,7 @@ class DragAndDropList implements DragAndDropListInterface {
       }
       allChildren.add(DragAndDropItemTarget(
         parent: this,
-        verticalAlignment: parameters.verticalAlignment,
-        itemGhost: parameters.itemGhost,
-        itemGhostOpacity: parameters.itemGhostOpacity,
-        itemSizeAnimationDuration: parameters.itemSizeAnimationDuration,
-        itemTargetOnWillAccept: parameters.itemTargetOnWillAccept,
+        parameters: parameters,
         onReorderOrAdd: parameters.onItemDropOnLastTarget!,
         child: lastTarget ??
             Container(
@@ -171,12 +167,7 @@ class DragAndDropList implements DragAndDropListInterface {
                     ),
                 DragAndDropItemTarget(
                   parent: this,
-                  verticalAlignment: parameters.verticalAlignment,
-                  itemGhost: parameters.itemGhost,
-                  itemGhostOpacity: parameters.itemGhostOpacity,
-                  itemSizeAnimationDuration:
-                      parameters.itemSizeAnimationDuration,
-                  itemTargetOnWillAccept: parameters.itemTargetOnWillAccept,
+                  parameters: parameters,
                   onReorderOrAdd: parameters.onItemDropOnLastTarget!,
                   child: lastTarget ??
                       Container(

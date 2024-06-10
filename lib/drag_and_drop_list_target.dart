@@ -37,7 +37,6 @@ class _DragAndDropListTarget extends State<DragAndDropListTarget>
         AnimatedSize(
           duration: Duration(
               milliseconds: widget.parameters.listSizeAnimationDuration),
-          vsync: this,
           alignment: widget.parameters.axis == Axis.vertical
               ? Alignment.bottomCenter
               : Alignment.centerLeft,
@@ -55,8 +54,8 @@ class _DragAndDropListTarget extends State<DragAndDropListTarget>
                   ? widget.lastListTargetSize
                   : null,
               width: widget.parameters.axis == Axis.horizontal
-                  ? 110
-                  : widget.lastListTargetSize,
+                  ? widget.lastListTargetSize
+                  : null,
             ),
       ],
     );
@@ -81,30 +80,30 @@ class _DragAndDropListTarget extends State<DragAndDropListTarget>
               if (candidateData.isNotEmpty) {}
               return Container();
             },
-            onWillAccept: (incoming) {
+            onWillAcceptWithDetails: (details) {
               bool accept = true;
               if (widget.parameters.listTargetOnWillAccept != null) {
-                accept =
-                    widget.parameters.listTargetOnWillAccept!(incoming, widget);
+                accept = widget.parameters.listTargetOnWillAccept!(
+                    details.data, widget);
               }
               if (accept && mounted) {
                 setState(() {
-                  _hoveredDraggable = incoming;
+                  _hoveredDraggable = details.data;
                 });
               }
               return accept;
             },
-            onLeave: (incoming) {
+            onLeave: (data) {
               if (mounted) {
                 setState(() {
                   _hoveredDraggable = null;
                 });
               }
             },
-            onAccept: (incoming) {
+            onAcceptWithDetails: (details) {
               if (mounted) {
                 setState(() {
-                  widget.onDropOnLastTarget(incoming, widget);
+                  widget.onDropOnLastTarget(details.data, widget);
                   _hoveredDraggable = null;
                 });
               }

@@ -90,7 +90,7 @@ class DragAndDropBuilderParameters {
     this.listInnerDecoration,
     this.listWidth = double.infinity,
     this.lastItemTargetColor,
-    this.lastItemTargetHeight = 0,
+    this.lastItemTargetHeight = 20,
     this.addLastItemTargetHeightToTop = false,
     this.listDragHandle,
     this.itemDragHandle,

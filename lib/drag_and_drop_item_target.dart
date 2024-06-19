@@ -44,7 +44,7 @@ class _DragAndDropItemTarget extends State<DragAndDropItemTarget>
                     )
                   : Container(),
             ),
-            // widget.child,
+            widget.child,
           ],
         ),
         Positioned.fill(

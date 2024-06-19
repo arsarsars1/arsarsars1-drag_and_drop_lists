@@ -66,7 +66,7 @@ class DragAndDropList implements DragAndDropListInterface {
   Widget generateWidget(DragAndDropBuilderParameters params) {
     var contents = <Widget>[];
     if (header != null) {
-      contents.add(Flexible(child: header!));
+      contents.add(Row(children: [Expanded(child: header!)]));
     }
     Widget intrinsicHeight = IntrinsicHeight(
       child: Row(
@@ -135,6 +135,7 @@ class DragAndDropList implements DragAndDropListInterface {
         onReorderOrAdd: parameters.onItemDropOnLastTarget!,
         child: lastTarget ??
             Container(
+              color: parameters.lastItemTargetColor,
               height: parameters.lastItemTargetHeight,
             ),
       ));

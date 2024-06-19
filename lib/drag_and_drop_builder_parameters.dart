@@ -50,6 +50,7 @@ class DragAndDropBuilderParameters {
   final Decoration? listDecorationWhileDragging;
   final Decoration? listInnerDecoration;
   final double listWidth;
+  final Color? lastItemTargetColor;
   final double lastItemTargetHeight;
   final bool addLastItemTargetHeightToTop;
   final DragHandle? listDragHandle;
@@ -88,7 +89,8 @@ class DragAndDropBuilderParameters {
     this.listDecorationWhileDragging,
     this.listInnerDecoration,
     this.listWidth = double.infinity,
-    this.lastItemTargetHeight = 20,
+    this.lastItemTargetColor,
+    this.lastItemTargetHeight = 0,
     this.addLastItemTargetHeightToTop = false,
     this.listDragHandle,
     this.itemDragHandle,
